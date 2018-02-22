@@ -9,12 +9,20 @@
     <link rel="stylesheet" href="new/css/bootstrap.min.css">
 
     <title>Bootstrap 04</title>
+    <style>
+      
+      @media (min-width:992px) and (max-width: 1199px){
+          .card-columns{
+            column-count: 4;
+          }
+      }
+    </style>
   </head>
   <body>
     
-    <div class="container">
-      <div class="row">
-      <section class="col-sm-3 col-md-4 card bg-primary text-white mb-5">
+    <div class="card-columns">
+      <!-- 1 card -->
+      <section class="card bg-primary text-white mb-5">
         <header class="card-header">
           <h2>City Center</h2>
         </header>
@@ -29,18 +37,25 @@
           <a class="card-link text-white" href="#">Gallery</a>
         </footer>
       </section>
-      <section class="col-sm-3 col-md-4 card mb-5">
+      
+      <!-- 2 card -->
+      <section class="card mb-5">
         <img class="card-img-top img-fluid" src="pics-large/pic2-320x240.jpg" alt="">
         <div class="card-body">
           <h2 class="card-title">Millennium Monument</h2>
           <p class=card-text>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Doloribus omnis adipisci itaque dolores
           </p>
+          
+        </div>
+        <footer class="card-footer">
           <a class="card-link" href="#">Read More</a>
           <a class="card-link" href="#">Google Maps</a>
           <a class="card-link" href="#">Gallery</a>
-        </div>
+        </footer>
       </section>
-      <section class="col-sm-3 col-md-4 card mb-5">
+
+      <!-- 3 card -->
+      <section class="card mb-5">
         <header class="card-header">
           <h2>City Attractions</h2>
         </header>
@@ -55,7 +70,9 @@
             <a class="card-link" href="#">Gallery</a>
         </footer>
       </section>
-      <section class="col-sm-3 col-md-4 card mb-5">
+
+      <!-- 4 card -->
+      <section class="card mb-5">
         <img class="card-img-top img-fluid" src="pics-large/pic4-320x240.jpg" alt="">
         <div class="card-body">
           <h2 class="card-title">Avon River</h2>
@@ -66,7 +83,9 @@
           <a class="card-link" href="#">Gallery</a>
         </div>
       </section>
-      <section class="col-sm-3 col-md-4 card mb-5">
+
+      <!-- 5 card -->
+      <section class="card mb-5">
         <img class="card-img-top img-fluid" src="pics-large/pic5-320x240.jpg" alt="">
         <div class="card-body">
           <h2 class="card-title">Chch University</h2>
@@ -77,7 +96,9 @@
           <a class="card-link" href="#">Gallery</a>
         </div>
       </section>
-      <section class="col-sm-3 col-md-4 card mb-5">
+
+      <!-- 6 card -->
+      <section class="card mb-5">
         <img class="card-img-top img-fluid" src="pics-large/pic6-320x240.jpg" alt="">
         <div class="card-body">
           <h2 class="card-title">Hagley Park</h2>
@@ -88,7 +109,19 @@
           <a class="card-link" href="#">Gallery</a>
         </div>
       </section>
-      </div> <!-- div class="row" -->
+    
+      <!-- 7 card -->
+      <section class="card mb-5">
+        <img class="card-img-top img-fluid" src="pics-large/pic6-320x240.jpg" alt="">
+        <div class="card-body">
+          <h2 class="card-title">Hagley Park</h2>
+          <p class=card-text>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Doloribus omnis adipisci itaque dolores reprehenderit dolore quod vero, culpa eius, recusandae necessitatibus amet repellendus quae aspernatur deleniti dolor beatae harum possimus.
+          </p>
+          <a class="card-link" href="#">Read More</a>
+          <a class="card-link" href="#">Google Maps</a>
+          <a class="card-link" href="#">Gallery</a>
+        </div>
+      </section>
     </div> <!-- div class="container"-->
 
 

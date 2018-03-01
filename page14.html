@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="new/css/bootstrap.min.css">
+
+    <title>Bootstrap 04</title>
+    <style>
+     
+    </style>
+  </head>
+  <body>
+    <div class="container-fluid">
+      <div class="row" id="main">
+        <div class="col-sm-12">
+          <h1 id="title"></h1>
+          <p></p>
+        </div>
+
+      </div>
+    </div>
+
+    <template id="template">
+        <section class="col-sm-4 col-md-6 col-lg-12">
+            <div class="row">
+              <header class="col-sm-4 col-md-12 col-lg-4">
+                <img class="img-fluid img-thumbnail" src="" alt="">          
+              </header>
+              
+              <div class="col-sm-8 col-md-12 col-lg-8">
+                <h2></h2>
+                <p></p>
+              
+              <footer class="">
+                <a class="btn btn-default" href="#">Read More</a>
+                <a class="btn btn-primary btn-lg" href="#">Web</a>
+                <a class="btn btn-success btn-sm" href="#">Gallery</a>
+              </footer>
+              </div> <!-- right col -->
+            </div> <!-- nested row -->
+          </section>
+    </template>
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="new/js/bootstrap.min.js"></script>
+    <script>
+       $(document).ready(function(){
+          var imgPath = './pics-large/';
+          $.get('./images.json', function(data,status){
+            console.log('Status:', status);
+            console.log('data:',data);
+            $('#title').html(data.title);
+            $('#title').next().html(data.description);
+            $.each( data.items, function(index,item){
+              var sectionHTML = $('#template').html();
+              var section = $(sectionHTML).clone();
+              section.find('img').attr({
+                'src': imgPath + item.src,
+                'alt': item.alt
+              });
+              section.find('h2').html(item.title);
+              section.find('p').html(item.shortinfo);
+              section.find('footer a:nth-child(2)').attr('href',item.url);
+              $('#main').append(section);
+
+            });//for each item in data.items
+          });//get images 
+       });//on document ready
+    </script>
+  </body>
+</html>

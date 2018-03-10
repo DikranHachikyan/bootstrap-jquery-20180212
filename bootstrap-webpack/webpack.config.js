@@ -38,8 +38,22 @@ module.exports = {
                     {
                         loader: "sass-loader"
                     }
+
                 ]
-            }
+            }, //scss
+            {
+                test:/\.html$/, loader: "html-loader"
+            },//html loader
+            {
+                test:/\.js$/,
+                exclude:/node_modules/,
+                use: {
+                    loader:"babel-loader",
+                    options: {
+                        presets:["env"]
+                    }
+                }
+            }//babel loader
         ] //rules
     }//module
 

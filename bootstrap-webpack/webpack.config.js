@@ -1,15 +1,38 @@
 const path = require("path");
 
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+const CopyWebpackPlugin = require('copy-webpack-plugin');
+
+const webpack = require('webpack');
+
+const htmlPluginOptions = {
+    template: "./index.html",
+    filename: "index.html",
+    inject: "body"
+};
+
+const providePluginOptions = {
+    $:'jquery',
+    jQuery:'jquery',
+    'window.jQuery':'jquery'
+};
+
+const copyImagesOptions = {
+    from: "./assets/images/**/*",
+    to: './'
+};
+
 module.exports = {
     entry: {
-        app:"./src/app.js"
+        app:"./src/app.js",
+        vendor:['bootstrap','jquery','popper.js']
     },
     output:{
         filename: "[name].bundle.js",
         path: path.resolve(__dirname, "dist")
     }, //output
     devServer:{
-        contentBase: path.resolve(__dirname, "./"),
+        contentBase: path.resolve(__dirname, "dist"),
         port:8080,
         open:true
     },//devServer
@@ -53,8 +76,37 @@ module.exports = {
                         presets:["env"]
                     }
                 }
-            }//babel loader
-        ] //rules
-    }//module
+            },//babel loader
+            // {
+            //     test:/\.(jpg|jpeg|png)$/,
+            //     use:{
+            //         loader:"url-loader",
+            //         options:{
+            //             limit: 100000
+            //         }
+            //     }
+            // },
+            {
+                test:/\.(jpg|jpeg|png)$/,
+                use:[{
+                    loader:"file-loader",
+                    options:{
+                        name: "images/[name]-[hash].[ext]"
+                    }
+                    
+                }]
+            }
 
+        ] //rules
+    },//module
+    optimization:{
+        splitChunks:{
+            name: "vendor"
+        }
+    }, //optimization
+    plugins: [
+        new HtmlWebpackPlugin(htmlPluginOptions),
+        new webpack.ProvidePlugin(providePluginOptions),
+        new CopyWebpackPlugin([ copyImagesOptions])
+    ]//Plugins
 }

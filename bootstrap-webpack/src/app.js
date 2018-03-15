@@ -5,5 +5,5 @@ import { initNavigation } from './js/navigation';
 
 console.log('My Web App');
 
-renderGallery('gallery1');
-initNavigation('.nav-item[data-name]');
+renderGallery('g1');
+initNavigation('.nav-item[data-id]');
